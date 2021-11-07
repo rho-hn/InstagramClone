@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Post from "./Post";
+import React, { useState } from 'react';
 
 function App() {
+  const [posts, setPosts] = useState([
+    {
+      imageUrl:"https://source.unsplash.com/500x500/?instagram",
+      userName:"pradipta-nag",
+      caption:"Working Post"
+    },
+    {
+      imageUrl:"https://source.unsplash.com/500x500/?instagram",
+      userName:"keya-nag",
+      caption:"Working Post"
+    }
+  ]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="app__header">
+        <img
+          className="app__headerImage"
+          src="https://source.unsplash.com/100x50/?instagram"
+          alt=""
+        />
+      </div>
+      {
+        posts.map(post => (
+          <Post imageUrl = {post.imageUrl} userName = {post.userName} caption = {post.caption}/>
+        ))
+      }
     </div>
   );
 }
